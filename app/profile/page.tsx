@@ -1,5 +1,7 @@
 import { auth } from "@/auth";
 import { redirect } from "next/navigation";
+import SignoutButton from "../../components/SignoutButton";
+import Image from "next/image";
 
 export default async function ProfilePage() {
   const session = await auth();
@@ -14,11 +16,13 @@ export default async function ProfilePage() {
         <img
             src={session.user.image ?? "/default-avatar.png"}
             alt="User profile picture"
+            width={16}
+            height={16}
             className = "w-16 h-16 rounded-full max-auto"
         />
         <h1 className="text-2xl font-bold text-black">Welcome, {session.user.name}</h1>
         <p className="text-black">{session.user.email}</p>
-        <a href="/api/auth/signout" className="text-blue-500 underline">Sign out</a>
+        <SignoutButton />
       </div>
     </main>
   );
