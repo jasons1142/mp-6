@@ -10,6 +10,9 @@ export const {handlers, auth} = NextAuth(
             })
         ],
         secret: process.env.AUTH_SECRET,
+        pages: {
+            signIn: "/"
+        }
     }
 )
 
